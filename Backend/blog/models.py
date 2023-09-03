@@ -26,12 +26,12 @@ class Post(models.Model):
     published=models.DateTimeField(default=timezone.now)
     author=models.ForeignKey(User, on_delete=models.CASCADE, related_name='post_user')
     
-    status=models.CharField(max_length=10, choices=option, defult='draft')
+    status=models.CharField(max_length=10, choices=option, default='draft')
     objects=models.Manager() #  USO DE MANAGERS
     postobject=PostObjects()
 
     class Meta:
-        ordering=('-published')
+        ordering=('-published',)
 
     def __str__(self):
         return self.title
